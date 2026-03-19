@@ -11,7 +11,7 @@ WORKDIR /app
 ENV NEXT_TELEMETRY_DISABLED=1
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-RUN corepack enable && pnpm build
+RUN mkdir -p public && corepack enable && pnpm build
 
 FROM base AS runner
 WORKDIR /app
